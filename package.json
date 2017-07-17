@@ -1,0 +1,19 @@
+{
+  "name": "creed-en-sus-profetas-windows",
+  "version": "1.0.0",
+  "description": "Windows version",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davrv93/creed-en-sus-profetas-windows.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davrv93/creed-en-sus-profetas-windows/issues"
+  },
+  "homepage": "https://github.com/davrv93/creed-en-sus-profetas-windows#readme"
+}

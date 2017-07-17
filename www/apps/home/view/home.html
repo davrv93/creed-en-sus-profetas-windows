@@ -1,0 +1,77 @@
+<!-- Templates -->
+<script id="main-templates" type="text/x-handlebars-template">
+    <div class="list item-body">
+        <img style="width:300px" src="resources/apps/home/creed-logo.png">
+        </a>
+</script>
+<script id="main-buttons" type="text/x-handlebars-template">
+    <md-list>
+        <md-list-item class="md-2-line"  ng-click="$parent.$parent.closeToast(); $root.goTo('app.reader.bible')">
+            <div flex="15">
+                <img src="resources/apps/home/bible.png" style="height:120px">
+            </div>
+            <div flex="85" class="md-list-item-text">
+                <h2 class="white-text"><b><ANY translate="reavivados"></ANY></b></h2>
+            </div>
+        </md-list-item>
+        <md-list-item class="md-2-line" href="#/app/reader_spirit_prophecy" ng-click="$parent.$parent.closeToast();" onclick="window.location.href='#/app/reader_spirit_prophecy'">
+            <div flex="15">
+                <img src="resources/apps/home/egw.png" style="height:120px">
+            </div>
+            <div flex="85" class="md-list-item-text">
+                <h2 class="white-text"><b><ANY translate="espiritu_profecia"></ANY></b></h2>
+            </div>
+        </md-list-item>
+    </md-list>
+</script>
+<script id="modal-update" type="text/x-handlebars-template">
+    <div class="md-dialog-content">
+        <div class="text-shown">
+            <h3 ng-bind-html="$root.need_update.title"></h3>
+            <h4 ng-bind-html="$root.need_update.content"></h4>
+            <br>
+            <br>
+        </div>
+    </div>
+    <ion-footer-bar class="bar-dark" keyboard-attach align="right">
+        <div class="md-dialog-actions" layout="row">
+            <button class="md-button" ng-show="$root.need_update['condition']" href="https://play.google.com/store/apps/details?id=com.davsoftw.creedasusprofetas" target="_blank" md-autofocus>
+                <ANY translate="btn.btn_update"></ANY>
+            </button>
+            <span flex></span>
+            <button class="md-button" ng-click="$parent.$parent.$parent.closeModal()">
+                <ANY translate="btn.btn_close"></ANY>
+            </button>
+        </div>
+    </ion-footer-bar>
+</script>
+<script id="modal-language" type="text/x-handlebars-template">
+    <div class="text-shown">
+        <h3>Elija el idioma que desea para la aplicación / Choose the desired app language.</h3>
+    </div>
+    <div class="md-dialog-actions" layout="row" layout-align="center">
+        <button class="md-button menu-button" md-autofocus ng-click="$root.change_language('ES'); $root.closeLangModal();">
+            Español
+        </button>
+        <button class="md-button menu-button" ng-click="$root.change_language('EN'); $root.closeLangModal();" >
+            English
+        </button>
+    </div>
+</script>
+<!-- Modals -->
+<modal-dialog show='dialogShown' dialog-title="{{'titles.dialog_update_title' | translate}}" height='50%' width='75%'>
+    <modal-update></modal-update>
+</modal-dialog>
+<modal-dialog show='dialogLangShown' dialog-title="Idioma / Language"  width='90%'>
+    <modal-language></modal-language>
+</modal-dialog>
+<div ng-init=" showConfirm();" class="has-header background  home-container responsive-sm full-height" overflow-scroll="false" align="center" ng-cloak>
+    <div layout-gt-md="column" layout="column" align="center" flex-gt-md="100">
+        <!-- Cabecera de Logo -->
+        <main-template></main-template>
+        <!-- Sección de botones -->
+        <md-content class="container-home-buttons" style="background:#8082C6">
+            <main-buttons></main-buttons>
+        </md-content>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="resources/static/css/style.css" rel="stylesheet">
+    <link href="lib/angular-material/angular-material.min.css" rel="stylesheet">
+    <link href="lib/react-responsive-audio-player/dist/audioplayer.css" rel="stylesheet">
+    <link href="lib/ngModal/dist/ng-modal.css" rel="stylesheet">
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-aria/angular-aria.min.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="lib/angular-animate/angular-animate.min.js"></script>
+    <script src="lib/angular-material/angular-material.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.min.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="lib/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="lib/handlebars/dist/handlebars.min.js"></script>
+    <script src="lib/react/dist/react.js"></script>
+    <script src="lib/react/dist/react-dom.js"></script>
+    <script src="lib/react/dist/prop-types.js"></script>
+    <script src="lib/react/dist/resize-observer-polyfill.js"></script>
+    <script src="lib/react-responsive-audio-player/dist/audioplayer.js"></script>
+    <script src="js/ng-services.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/translate.js"></script>
+    <script src="apps/home/router.js"></script>
+    <script src="lib/angular-translate/angular-translate.js"></script>
+    <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js">
+    </script>
+    <script src="lib/ionic-toast/dist/ionic-toast.bundle.min.js"></script>
+    <script src="lib/ngModal/dist/ng-modal.min.js"></script>
+    <script src="apps/home/view/home.js"></script>
+    <script src="apps/home/controller/home.js"></script>
+    <script src="apps/home/controller/appctrl.js"></script>
+    <script src="apps/reader/service/api.js"></script>
+    <script src="apps/reader/controller/reader.js"></script>
+    <script src="apps/reader/controller/reader.js"></script>
+    <script src="apps/reader/controller/spirit_prophecy_read.js"></script>
+    <script src="apps/reader/controller/commentary_verse.js"></script>
+</head>
+
+<body ng-app="starter" ng-cloak style="background: #8082C6">
+    <div ui-view="toolbar">
+    </div>
+    <div ui-view="homeView" style="height:91%">
+    </div>
+</body>
+
+</html>

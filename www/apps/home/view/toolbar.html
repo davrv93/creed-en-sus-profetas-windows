@@ -1,0 +1,65 @@
+<div ng-controller="AppCtrl" layout="column" ng-cloak>
+    <md-toolbar md-colors="::{background: 'white'}">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()" ng-hide="isOpenRight()">
+                <ng-md-icon icon="menu"></ng-md-icon>
+            </md-button>
+            <h1 class="md-toolbar-tools">{{'app' | translate}}</h1>
+            <md-button class="md-icon-button md-primary" aria-label="Language" ng-click="showActionToast()" ng-hide="isOpenRight()">
+                <ng-md-icon icon="help">
+                    <md-tooltip>{{'ayuda' | translate}}</md-tooltip>
+                </ng-md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary" aria-label="Language" ng-click="toggleRight()" ng-hide="isOpenRight()">
+                <ng-md-icon icon="language">
+                    <md-tooltip>{{'idioma_titulo' | translate}}</md-tooltip>
+                </ng-md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <section layout="row" flex>
+<md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="left" style="background: #8082C6">
+            <md-toolbar md-colors="::{background: 'white'}">
+                <h1 class="md-toolbar-tools" translate="menu"></h1>
+            </md-toolbar>
+            <md-content ng-controller="RightCtrl" layout-padding style="background: #8082C6">
+                <md-list>
+                    <md-list-item class="md-2-line" ng-click="change_language('ES')" >
+                        <div class="md-list-item-text" >
+                            <h2 class="white-text"><b><ANY translate="home"></ANY></b></h2>
+                        </div>
+                    </md-list-item>
+                    <md-list-item class="md-2-line" ng-click="change_language('ES')" >
+                        <div class="md-list-item-text" >
+                            <h2 class="white-text"><b><ANY translate="reavivados"></ANY></b></h2>
+                        </div>
+                    </md-list-item>
+                    <md-list-item class="md-2-line" ng-click="change_language('EN')" >
+                        <div class="md-list-item-text" >
+                            <h2 class="white-text"><b><ANY translate="espiritu_profecia"></ANY></b></h2>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right" style="background: #8082C6">
+            <md-toolbar md-colors="::{background: 'white'}">
+                <h1 class="md-toolbar-tools" translate="idioma_titulo"></h1>
+            </md-toolbar>
+            <md-content ng-controller="RightCtrl" layout-padding style="background: #8082C6">
+                <md-list>
+                    <md-list-item class="md-2-line" ng-click="change_language('ES')" >
+                        <div class="md-list-item-text" >
+                            <h2 class="white-text"><b><ANY translate="translate.español"></ANY></b></h2>
+                        </div>
+                    </md-list-item>
+                    <md-list-item class="md-2-line" ng-click="change_language('EN')" >
+                        <div class="md-list-item-text" >
+                            <h2 class="white-text"><b><ANY translate="translate.ingles"></ANY></b></h2>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+    </section>
+</div>

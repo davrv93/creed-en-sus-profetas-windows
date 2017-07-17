@@ -1,0 +1,39 @@
+<ion-view title="{{'app' | translate}}" id="bg-locale-color" ng-controller="LocaleCtrl">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+ 
+  <ion-content class="has-header   home-container responsive-sm" align="center">
+  		<div class="main-logo">
+  			<img src="resources/apps/home/creed-logo.png" >
+  		</div>
+			{{'translate.elegir' | translate}}  		
+  		<br>
+  		<br>
+  		<br>
+		<div layout-xs="row" layout-sm="column" align="center" class = "row menu-icons responsive">
+	   		<div class = "col" >
+	   				<img id="spanish-button" ng-click="switchLanguage('ES')">
+	   				{{'translate.español' | translate}}
+	   		</div>
+	   		<div class = "col" >
+	   				<img id="english-button" ng-click="switchLanguage('EN')">
+	   				{{'translate.ingles' | translate}}
+	   		</div>
+		</div>
+		<br>
+		<div layout-xs="row" layout-sm="column" align="center" class = "row menu-icons responsive">
+	   		<div>{{'translate.elegido' | translate}} {{language}} {{'translate.confirmar' | translate}}</div>
+	   		<div class = "col" >
+	   		<a href="#/app/">
+	   				<input type="button" id="next-button" >
+	   				</a>
+	   		</div>
+		</div>
+		<br>
+		<br>
+		<br>
+  </ion-content>
+ 
+
+</ion-view>

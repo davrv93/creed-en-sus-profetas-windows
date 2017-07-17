@@ -1,0 +1,124 @@
+<ion-view title="{{headerTitle}}" ng-controller="BibleCtrl" style="background-color:#8082C6">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <md-button ng-show="!conditionPlayer && content.audio" ng-click="handlePlayer()" class="md-icon-button" aria-label="Refresh">
+            <ng-md-icon icon="music_note"></ng-md-icon>
+        </md-button>
+        <md-button ng-show="conditionPlayer && content.audio" ng-click="handlePlayer()" class="md-icon-button" aria-label="Refresh">
+            <ng-md-icon icon="share"></ng-md-icon>
+        </md-button>
+        <md-button ng-click="onListReading()" class="md-icon-button" aria-label="Refresh">
+            <ng-md-icon icon="refresh"></ng-md-icon>
+        </md-button>
+        <md-menu>
+            <!-- Trigger element is a md-button with an icon -->
+            <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open sample menu">
+                <ng-md-icon icon="language"></ng-md-icon>
+            </md-button>
+            <md-menu-content>
+                <md-menu-item>
+                    <md-button ng-click="change_language('ES')">
+                        <div class="locale_icon">
+                            <ng-include src="'resources/apps/home/es.svg'"></ng-include>
+                            <p class="locale_word">&emsp;{{'translate.español' | translate}}&emsp;&emsp;</p>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="change_language('EN')">
+                        <div class="locale_icon">
+                            <ng-include src="'resources/apps/home/en.svg'"></ng-include>
+                            <p class="locale_word">&emsp;{{'translate.ingles' | translate}}&emsp;&emsp;</p>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </ion-nav-buttons>
+    <div ng-show="!searchMode" class="bar bar-subheader bar-dark">
+        <h2 class="title">{{pageTitle}}: {{obj_header.chapter}}</h2>
+    </div>
+    <div ng-show="searchMode" class="bar bar-subheader bar-dark item-input-inset">
+        <button class="button button-royal" style="margin-right:15px" ng-click="search()">
+            {{'buscador.btn_buscar' | translate}}
+        </button>
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="{{'buscador.label' | translate}}" ng-model="query">
+        </label>
+        <button class="button button-clear" ng-click="searchFunction()">
+            {{'buscador.btn_cancelar' | translate}}
+        </button>
+    </div>
+    <ion-content class="background home-container responsive-sm has-footer has-subfooter " align="center" style=" padding-bottom:40px" overflow-scroll="false">
+        <md-content style="height:100%;" class="background has-header has-footer has-subfooter">
+            <div class="item item-text-wrap" style="background:white" ng-repeat="x in book | filter:{testament:testament}">
+                {{x.name}}
+            </div>
+        </md-content>
+    </ion-content>
+    <div class="bar bar-subfooter bar-dark">
+        <a class="tab-item" flex="50" ng-click="setAT();scrollTop()">
+                Antiguo Testamento
+              </a>
+        <a class="tab-item" flex="50" ng-click="setNT();scrollTop()">
+                Nuevo Testamento
+              </a>
+    </div>
+    <ion-footer-bar class="bar-stable" keyboard-attach>
+        <div id="audio_player_container" ref="player">
+        </div>
+        <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
+              vertical-align: middle;
+              line-height: normal; text-align: right; width:80% ">
+            <md-button class="md-icon-button" aria-label="Open sample menu" ng-click="searchFunction()">
+                <ng-include src="'resources/apps/home/book.svg'"></ng-include>
+            </md-button>
+        </div>
+        <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
+              vertical-align: middle;
+              line-height: normal; text-align: right; ">
+            <md-button class="md-icon-button" aria-label="Open sample menu" ng-click="shareSocial('twitter')">
+                <ng-md-icon icon="message"></ng-md-icon>
+            </md-button>
+        </div>
+        <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
+              vertical-align: middle;
+              line-height: normal; text-align: right; ">
+            <md-button class="md-icon-button" aria-label="Open sample menu" ng-click="searchFunction()">
+                <ng-md-icon icon="search"></ng-md-icon>
+            </md-button>
+        </div>
+        <div ng-show="!conditionPlayer" layout="row" style="display: inline-block;
+              vertical-align: middle;
+              line-height: normal; text-align: right; ">
+            <md-button class="md-icon-button" aria-label="Open sample menu" ng-click="shareSocial('copy')">
+                <ng-md-icon icon="content_copy"></ng-md-icon>
+            </md-button>
+        </div>
+        <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
+              vertical-align: middle;
+              line-height: normal; text-align: right; ">
+            <md-button class="md-icon-button" aria-label="Open sample menu" ng-click="shareSocial('twitter')">
+                <ng-include src="'resources/apps/home/twitter.svg'"></ng-include>
+            </md-button>
+        </div>
+        <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
+              vertical-align: middle;
+              line-height: normal; text-align: right; ">
+            <md-button class="md-icon-button" aria-label="Open sample menu" ng-click="shareSocial('facebook')">
+                <ng-include src="'resources/apps/home/facebook.svg'"></ng-include>
+            </md-button>
+        </div>
+        <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
+              vertical-align: middle;
+              line-height: normal; text-align: right; ">
+            <md-button class="md-icon-button" aria-label="Open sample menu" ng-click="shareSocial('whatsapp')">
+                <ng-include src="'resources/apps/home/whatsapp.svg'"></ng-include>
+            </md-button>
+        </div>
+    </ion-footer-bar>
+    <core-progress state="progress"></core-progress>
+</ion-view>

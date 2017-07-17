@@ -1,0 +1,24 @@
+<ion-view title="{{'app' | translate}}">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+<ion-content class="has-header background ">
+	  	<div layout="column" class="centre" >
+		  	<div class="menu-icons responsive centre" style="align-center">
+		  			<img src="resources/apps/home/settings.png" >
+		  	</div>
+		  	<div class=" padding-top-settings">
+		    <ion-list >
+		        <ion-item nav-clear id="text-menu" menu-close href="#/app/settings_locale">
+		            {{'config.idioma' | translate}}
+		        </ion-item>
+		        <ion-item nav-clear id="text-menu" menu-close href="#/app/reader_bible">
+		            {{'reavivados' | translate}}
+		        </ion-item>
+		    </ion-list>
+		    </div>
+		</div>
+    </ion-content>
+
+</ion-view>

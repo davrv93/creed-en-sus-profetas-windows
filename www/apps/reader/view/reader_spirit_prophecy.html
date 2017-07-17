@@ -1,0 +1,25 @@
+<ion-view title="{{'app' | translate}}" ng-controller="SpiritProphecyReadCtrl" style="background-color:#8082C6">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <a class="button button-icon icon ion-refresh" aria-label="Refresh" ng-click="onListReading()"></a>
+        <a class="button button-icon icon ion-earth" aria-label="Open language menu" menu-toggle="right"></a>
+    </ion-nav-buttons>
+    <div class="bar bar-subheader bar-dark">
+        <h2 class="title">{{pageTitle}}</h2>
+    </div>
+    <ion-content class="background home-container responsive-sm " align="center" style="height:85%; padding-bottom:40px">
+        <md-content style="height:100%;" class="background has-header has-footer">
+            <div style="text-align: justify; text-justify: inter-word; margin-left:15px;margin-right:15px; margin-bottom:2px" ng-repeat="x in obj_reading">
+                <span class="verse" ng-bind-html="x.data"></span>
+                <br>
+                <br>
+            </div>
+        </md-content>
+    </ion-content>
+    <ion-footer-bar class="bar-dark" keyboard-attach>
+        <h1 class="title">{{footerTitle}}</h1>
+    </ion-footer-bar>
+    <core-progress state="progress"></core-progress>
+</ion-view>
