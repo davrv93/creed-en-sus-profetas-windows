@@ -1,4 +1,4 @@
-app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate, $http, ionicToast, $cordovaClipboard, $filter, API_READER, $stateParams, $translate, $rootScope, $cordovaSocialSharing) {
+app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $filter, API_READER, $stateParams, $translate, $rootScope ) {
     var $translateFilter = $filter('translate');
     console.log('test')
     $scope.conditionPlayer = false;
@@ -334,6 +334,7 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $ionicScrollDelegate
             //console.log(res);
             $scope.obj_header = res.obj_header;
             $scope.obj_reading = res.obj_reading;
+            console.log(res.obj_header.book_name)
             $scope.pageTitle = $translateFilter(res.obj_header.book_name);
             $rootScope.progress = false;
         }).error(function(err) {

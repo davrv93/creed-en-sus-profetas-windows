@@ -66,6 +66,13 @@
             $state.go(param, {});
         }
 
+        $rootScope.goBible = function(){
+console.log('test')
+            $state.go('reader.bible',{});  
+        }
+
+        
+
         $rootScope.change_language = function(locale) {
             console.log('locale', locale)
             $translate.use(locale);
