@@ -1,15 +1,11 @@
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
 
-
-    // $ionicConfigProvider.backButton.previousTitleText(false);
-    // $ionicConfigProvider.backButton.icon('ion-chevron-left');
-    // $ionicConfigProvider.backButton.text('')
 
 
     $stateProvider
 
         .state('app', {            
-            url: "/app",
+            url: "/bhp",
             abstract: false,
 //            templateUrl:"apps/home/view/root.html",
             views: {
@@ -83,4 +79,5 @@ app.config(function($stateProvider, $urlRouterProvider) {
         
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app');
+
 });
