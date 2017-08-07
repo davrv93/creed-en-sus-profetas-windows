@@ -22,19 +22,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 'toolbar': {
                     templateUrl: "apps/home/view/toolbar.html",
                     controller: 'AppCtrl',
-                    abstract: true,
+                    
                     cache: false
                 },
                 'menuLanguage': {
                     templateUrl: "apps/home/view/menu.html",
                     controller: 'RightCtrl',
                     cache: false
-                },
-                'bibleView': {
-                    templateUrl: "apps/reader/view/tab-bible.html",
-                    controller: 'ReaderCtrl',
-                    cache: false
-
                 }
 
             },
@@ -48,10 +42,27 @@ app.config(function($stateProvider, $urlRouterProvider) {
             views: {
                 'homeView': {
                     templateUrl: "apps/reader/view/tab-bible.html",
-                    controller: 'HomeCtrl',
+                    controller: 'ReaderCtrl',
                     cache: false
 
                 },
+                'toolbar': {
+                    templateUrl: "apps/reader/view/toolbar-reader.html",
+                    controller: 'AppCtrl',
+                    cache: false
+
+                },
+                'menuLanguage': {
+                    templateUrl: "apps/home/view/menu.html",
+                    controller: 'RightCtrl',
+                    cache: false
+                },
+                'leftsidenav@bible':{
+                      templateUrl: "apps/home/view/left-sidenav.html",
+                    controller: 'RightCtrl',
+                    cache: false
+                }
+                
             }
         })
 

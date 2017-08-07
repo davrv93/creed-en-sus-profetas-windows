@@ -2,8 +2,8 @@ footer {
     background-color: #ccc;
 }
 
-.checkbox-top{
-    margin-top:-8px
+.checkbox-top {
+    margin-top: -8px
 }
 
 audio {
@@ -13,6 +13,29 @@ audio {
 .menu-button {
     background-color: #444444;
     color: white
+}
+
+.search-box {
+    background-color: black;
+    height: 8%;
+    color: white
+}
+
+.custom-bar-dark {
+    background-color: #333333
+}
+
+.icon-in-button {
+    line-height: 1;
+    display: inline-block;
+    line-height: 16px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.custom-footer-dark {
+    background-color: #333333;
+    height: 9.5%
 }
 
 #main-logo {
@@ -97,6 +120,9 @@ audio {
 .has-header-subheader-and-tabs {
     top: $bar-height + $bar-subheader-height + $tabs-height;
 }
+
+
+
 
 
 /* Make it a marquee */
@@ -201,9 +227,8 @@ a:active {
     background-color: #8082C6;
 }
 
-.background .md-content{
-        background-color: #8082C6;
-
+.background .md-content {
+    background-color: #8082C6;
 }
 
 #bg-menu {
@@ -228,9 +253,12 @@ a:active {
     -webkit-flex-direction: column;
 }
 
-.home-container > .row {
+.home-container>.row {
     -webkit-flex: 1;
 }
+
+
+
 
 
 /*@media only screen and (min-width:960px and max-width: ){
@@ -666,6 +694,9 @@ a:active {
 }
 
 
+
+
+
 /*
 @media (max-width:960px) and (min-width:601px)  and (max-height:360px) {
 .menu-icons {
@@ -748,6 +779,9 @@ a:active {
         color: white;
     }
 }
+
+
+
 
 
 /*
@@ -950,6 +984,9 @@ a:active {
 }
 
 
+
+
+
 /* Notifications */
 
 .notification {
@@ -995,6 +1032,9 @@ a:active {
     transition-duration: 0.3s;
     transition-timing-function: ease-out;
 }
+
+
+
 
 
 }

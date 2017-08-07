@@ -1,7 +1,7 @@
-app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $filter, API_READER, $stateParams, $translate, $rootScope ) {
+app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $filter, API_READER, $stateParams, $translate, $rootScope) {
     var $translateFilter = $filter('translate');
-    console.log('test')
-    $scope.conditionPlayer = false;
+    $scope.supported = false;
+    $rootScope.conditionPlayer = false;
     $scope.searchMode = false;
     $scope.headerTitle = $translateFilter('hashtag');
     $scope.filter = { "data_clean": '' };
@@ -15,6 +15,18 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
             $scope.headerTitle = $translateFilter('hashtag');
         }
     });
+
+    $scope.setAria = function(){
+        $scope.cabecera= $translateFilter('aria.cabecera')+ $scope.pageTitle + $scope.obj_header.chapter;
+    }
+
+    $scope.copied = function() {
+        console.log('Copied!');
+    };
+
+    $scope.fail = function(err) {
+        console.error('Error!', err);
+    };
 
     $scope.searchCancel = function() {
         $scope.searchMode = false;
@@ -52,8 +64,8 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
 
     $scope.list_underline = [];
 
-    $scope.showActionToast = function() {
-        ionicToast.show($translateFilter('reader_msg'), 'bottom', false, 2000);
+    $scope.showActionToast = function(param) {
+        ionicToast.show($translateFilter(param), 'bottom', false, 2000);
     };
 
     $scope.closeToast = function() {
@@ -81,6 +93,8 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
     }
 
     $scope.buildVerse = function() {
+        if($scope.obj_header!=undefined)
+        {
         $scope.list_underline = $scope.list_underline.sort(dynamicSort("id"));
         var hashtag = $translateFilter('hashtag');
         var book = $scope.pageTitle + ': ' + $scope.obj_header.chapter + '\n'
@@ -90,9 +104,11 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
 
         }
         var text = hashtag + ' ' + book + verse;
+        }
         console.log($scope.list_underline);
         return text
     }
+
 
     $scope.inObject = function(target, data) {
 
@@ -152,13 +168,13 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
         $translate.use(locale);
         localStorage.language = locale;
         $scope.onListReading();
-        if ($scope.conditionPlayer) {
+        if ($rootScope.conditionPlayer) {
             $scope.dropPlayer();
-            $scope.conditionPlayer = true;
+            $rootScope.conditionPlayer = true;
             $scope.handlePlayer();
         }
 
-        $scope.conditionPlayer = false;
+        $rootScope.conditionPlayer = false;
     };
 
 
@@ -201,13 +217,14 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
     };
 
     $scope.handlePlayer = function() {
-        if ($scope.conditionPlayer) {
+        if ($rootScope.conditionPlayer) {
             $scope.dropPlayer();
-            $scope.conditionPlayer = false;
+            $rootScope.conditionPlayer = false;
         } else {
             $scope.renderPlayer();
-            $scope.conditionPlayer = true;
+            $rootScope.conditionPlayer = true;
         }
+        console.log('conditionPlayer', $rootScope.conditionPlayer)
     };
 
     console.log($state.$current);
@@ -217,7 +234,7 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
     }, function(newVal, oldVal) {
         //do something with values
         $scope.dropPlayer();
-        $scope.conditionPlayer = false;
+        $rootScope.conditionPlayer = false;
     })
 
     $scope.HighLight = function() {
@@ -297,6 +314,7 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
     }
 
     $scope.onListReading = function() {
+        console.log('onListReading')
         $rootScope.progress = true;
         var currentDate = new Date()
         var day = currentDate.getDate();
@@ -328,7 +346,7 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
         $http(req).success(function(res) {
             $scope.content = res;
             $rootScope.chapter = res['commentary'];
-            if(res['commentary']==undefined){
+            if (res['commentary'] == undefined) {
                 $rootScope.chapter = false;
             }
             //console.log(res);
@@ -337,6 +355,7 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
             console.log(res.obj_header.book_name)
             $scope.pageTitle = $translateFilter(res.obj_header.book_name);
             $rootScope.progress = false;
+            $scope.setAria();
         }).error(function(err) {
             console.log('Err', err)
             $scope.obj_reading = [{

@@ -1,6 +1,21 @@
 app
     .config(["$translateProvider", function($translateProvider, $translate) {
         $translateProvider.translations("ES", {
+            "aria":{
+                "saludo":{
+                    "maniana": "Buen día",
+                    "tarde": "Buenas tardes",
+                    "noche":"Buenas noches"
+                },
+                "despedida":{
+                    "salir":"Gracias por leer la Biblia"
+                },
+
+                "cabecera":"Aplicación: Creed en sus profetas, el día de hoy el capítulo es:",
+                "cabecera_botones_derecho":"Estas son las opciones del menú superior derecho:"
+            },
+
+
             "app": "Creed en sus profetas",
             "volver": "Volver",
             "ayuda": "Ayuda",
@@ -17,6 +32,7 @@ app
             "menu": "Menú",
             "idioma_titulo": "Seleccione el idioma",
             "cerrar": "Cerrar",
+            "copiado": "Se ha copiado el texto seleccionado",
             "hashtag": "#rpsp",
             "hashtag_commentary": "#rpsp #cba",
             "versiculo": "Versículo",
@@ -143,6 +159,11 @@ app
 
         });
         $translateProvider.translations("EN", {
+            "aria":{
+                "cabecera":"Welcome to Believe his Prophets, the daily chapter for today is:",
+                "cabecera_botones_derecho":"Estas son las opciones del menú superior derecho:"
+            },
+
             "app": "Believe his prophets",
             "volver": "Back",
             "biblia": "Bible",
@@ -169,6 +190,7 @@ app
             "configuracion": "Settings",
             "calendario": "Calendar",
             "versiculo": "Verse",
+            "copiado": "The selected verse has been copied",
             "idioma_titulo": "Choose language for the app",
             "hashtag": "#bhp",
             "hashtag_commentary": "#bhp #abc",
