@@ -2,7 +2,7 @@
 (function() {
     "use strict";
 
-    app.controller('HomeCtrl', function($scope, $http, $rootScope, ionicToast, $filter, $translate, $stateParams,$state) {
+    app.controller('HomeCtrl', function($scope, $http, $rootScope, ionicToast, $filter, $translate, $stateParams, $state) {
         if (localStorage.appVersion != undefined) {
             $rootScope.appVersion = localStorage.appVersion
         }
@@ -61,17 +61,22 @@
 
         };
 
-        $rootScope.goTo = function(param){
+        $rootScope.goTo = function(param) {
             console.log(param)
             $state.go(param, {});
         }
 
-        $rootScope.goBible = function(){
-console.log('test')
-            $state.go('reader.bible',{});  
+        $rootScope.goBible = function() {
+            console.log('test')
+            $state.go('reader.bible', {});
         }
 
-        
+        $scope.goRevived = function(){
+            console.log('test')
+            $state.go('app.bible');
+        }
+
+
 
         $rootScope.change_language = function(locale) {
             console.log('locale', locale)
@@ -136,8 +141,8 @@ console.log('test')
             $scope.dialogShown = false;
         }
 
-        $rootScope.closeLangModal = function(){
-            $scope.dialogLangShown=false;
+        $rootScope.closeLangModal = function() {
+            $scope.dialogLangShown = false;
         }
 
         $scope.showAdvanced = function(ev) {
@@ -145,7 +150,29 @@ console.log('test')
         };
 
 
-        $scope.aria_inicio_reavivados_opcion=$translateFilter('aria.inicio.reavivados_opcion');
+        $scope.aria_inicio_reavivados_opcion = $translateFilter('aria.inicio.reavivados_opcion');
+
+
+        if (annyang) {
+            // Let's define our first command. First the text we expect, and then the function it should call
+            annyang.setLanguage('es-US')
+            var commands = {
+                'Leer reavivados por su palabra': function() {
+                    $scope.goRevived();
+                    $scope.$apply();
+
+                },
+                
+
+
+            };
+
+            // Add our commands to annyang
+            annyang.addCommands(commands);
+            annyang.debug();
+            // Start listening. You can call this here, or attach this call to an event, button, etc.
+            annyang.start();
+        }
 
 
     });

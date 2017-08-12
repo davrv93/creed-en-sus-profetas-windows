@@ -371,4 +371,26 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
     }
     $scope.onListReading();
 
+    if (annyang) {
+            // Let's define our first command. First the text we expect, and then the function it should call
+            annyang.setLanguage('es-US')
+            var commands = {
+                'Escuchar reavivados por su palabra': function() {
+                    $scope.handlePlayer();
+                    $scope.$apply();
+
+                },
+                
+
+
+            };
+
+            // Add our commands to annyang
+            annyang.addCommands(commands);
+            annyang.debug();
+            // Start listening. You can call this here, or attach this call to an event, button, etc.
+            annyang.start();
+        }
+
+
 });
