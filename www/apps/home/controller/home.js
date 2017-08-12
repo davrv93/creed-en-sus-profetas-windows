@@ -144,6 +144,10 @@ console.log('test')
             $scope.dialogShown = !$scope.dialogShown;
         };
 
+
+        $scope.aria_inicio_reavivados_opcion=$translateFilter('aria.inicio.reavivados_opcion');
+
+
     });
 
 }());

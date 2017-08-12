@@ -10,6 +10,26 @@ app
                 "despedida":{
                     "salir":"Gracias por leer la Biblia"
                 },
+                "inicio":{
+                    "logo": "Logotipo de la aplicación",
+                    "reavivados_opcion": "Reavivados por su Palabra, usted puede hacer clic; presionar la tecla Enter o usar el comando de voz,  'Leer Reavivados por su Palabra' para leer el capítulo de hoy, consulte la sección de comandos de voz para más información. ",
+                    "egw_opcion": "Espíritu de profecía, usted puede hacer clic; presionar la tecla Enter o usar el comando de voz,  'Leer Espíritu de Profecía' para leer el capítulo del espíritu de profecía de hoy, consulte la sección de comandos de voz para más información. "
+                },
+                "toolbar":{
+                    "ayuda": "Opción Ayuda.  Haga clic o use comando de voz Abrir ayuda para ver más información",
+                    "idioma": "Opción Idioma.  Haga clic o use comando de voz Abrir idioma para cambiar el idioma de la aplicación",
+                    "toolbar": "Barra de opciones: En esta barra se encuentran las opciones disponibles, el botón del lado izquierdo cuyo ícono es un botón de 3 rayas, es la opción Menú, haga clic en Menú para poder ver las opciones disponibles como son; Reavivados por su palabra o Espíritu de Profecía. En el lado derecho de la misma barra se encuentran las opciones Ayuda y Cambiar idioma sucesivamente.",
+                    "menu": "Opción Menuu. Haga clic o use comando de voz Abrir menuu para ver las opciones disponibles en la aplicación"
+
+                },
+                "menu":{
+                    "menu":"Listado de opciones del Menú, Opción Menú Principal, esta opción le redirige a la pantalla de inicio, usted puede hacer clic, presionar la tecla Enter o usar el comando de voz, 'Ir al Menú Principal', consulte la sección de comandos de voz para más información.",
+                    "logo": "Logotipo de la aplicación.",
+                    "reavivados_opcion": "Reavivados por su Palabra, usted puede hacer clic; presionar la tecla Enter o usar el comando de voz,  'Leer Reavivados por su Palabra' para leer el capítulo de hoy, consulte la sección de comandos de voz para más información. ",
+                    "egw_opcion": "Espíritu de profecía, usted puede hacer clic; presionar la tecla Enter o usar el comando de voz,  'Leer Espíritu de Profecía' para leer el capítulo del espíritu de profecía de hoy, consulte la sección de comandos de voz para más información. ",
+                    "idioma_español":"Opción: Cambiar idioma a español, usted puede hacer clic; presionar la tecla Enter o usar el comando de voz, 'Cambiar idioma a Español' para poder cambiar el idioma a Español, consulte la sección de comandos de voz para más información",
+                    "idioma_ingles":"Opción: Cambiar idioma a inglés, usted puede hacer clic; presionar la tecla Enter o usar el comando de voz, 'Cambiar idioma a Inglés' para poder cambiar el idioma a Inglés, consulte la sección de comandos de voz para más información"
+                },
 
                 "cabecera":"Aplicación: Creed en sus profetas, el día de hoy el capítulo es:",
                 "cabecera_botones_derecho":"Estas son las opciones del menú superior derecho:"
