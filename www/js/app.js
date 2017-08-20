@@ -7,7 +7,7 @@
 var app = angular.module('starter', ['ionic-toast', 'ngResource', // inject the Ionic framework
         'pascalprecht.translate', 'ui.router', 'ngAria', 'ngServices',
         'ngMdIcons', 'ngModal', 'ngMaterial', 'ngAnimate','ngSanitize',
-        'angular-clipboard'
+        'angular-clipboard','ngAudio'
     ])
 
     .run(function($rootScope, $http) {

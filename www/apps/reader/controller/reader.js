@@ -1,4 +1,6 @@
-app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $filter, API_READER, $stateParams, $translate, $rootScope) {
+app.controller('ReaderCtrl', function($scope, $sce, $state, $http, 
+    ionicToast, $filter, API_READER, $stateParams, 
+    ngAudio,$translate, $rootScope) {
     var $translateFilter = $filter('translate');
     $scope.supported = false;
     $rootScope.conditionPlayer = false;
@@ -105,7 +107,7 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
         }
         var text = hashtag + ' ' + book + verse;
         }
-        console.log($scope.list_underline);
+        
         return text
     }
 
@@ -218,10 +220,8 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
 
     $scope.handlePlayer = function() {
         if ($rootScope.conditionPlayer) {
-            $scope.dropPlayer();
             $rootScope.conditionPlayer = false;
         } else {
-            $scope.renderPlayer();
             $rootScope.conditionPlayer = true;
         }
         console.log('conditionPlayer', $rootScope.conditionPlayer)
@@ -349,6 +349,11 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http, ionicToast, $
             if (res['commentary'] == undefined) {
                 $rootScope.chapter = false;
             }
+
+            $scope.audio = 'http://davrv93.pythonanywhere.com/' + $scope.content.audio
+            $scope.sound = ngAudio.load($scope.audio); // returns NgAudioObject
+            console.log($scope.sound)
+            
             //console.log(res);
             $scope.obj_header = res.obj_header;
             $scope.obj_reading = res.obj_reading;

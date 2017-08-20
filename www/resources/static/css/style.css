@@ -2,6 +2,14 @@ footer {
     background-color: #ccc;
 }
 
+.title-div{
+        height:7%;
+    }
+
+    .footer-div{
+        height:93%;
+    }
+
 .checkbox-top {
     margin-top: -8px
 }
@@ -742,6 +750,15 @@ a:active {
         height: 120px;
         align-items: center;
     }
+    .title-div{
+        height:5%;
+    }
+
+    .footer-div{
+        height:95%;
+    }
+
+
     .verse {
         font-size: 16px;
         font-color: white;
@@ -855,6 +872,16 @@ a:active {
 */
 
 @media (max-width:1280px) and (min-width:961px) {
+    .title-div{
+        height:5%;
+    }
+
+    .footer-div{
+        height:95%;
+    }
+
+
+
     .menu-icons {
         width: 120px;
         height: 120px;
@@ -1041,4 +1068,25 @@ a:active {
 
 #text-align-center{
     text-align:center !important;
+}
+
+
+
+md-progress-linear .md-container {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 60px !important;
+    -webkit-transform: translate(0,0) scale(1,1);
+    transform: translate(0,0) scale(1,1);
+}
+
+md-progress-linear .md-container .md-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px !important;
 }

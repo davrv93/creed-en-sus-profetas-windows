@@ -3,8 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-      
-
     <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
@@ -19,6 +17,7 @@
     <script src="lib/angular-animate/angular-animate.min.js"></script>
     <script src="lib/angular-material/angular-material.min.js"></script>
     <script src="lib/angular-resource/angular-resource.min.js"></script>
+    <script src="lib/angular-audio/app/angular.audio.js"></script>
     <script src="lib/angular-clipboard/angular-clipboard.js"></script>
     <script src="lib/annyang/annyang.min.js"></script>
     <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
@@ -48,11 +47,13 @@
     <script src="apps/reader/controller/commentary_verse.js"></script>
 </head>
 
-<body ng-app="starter" ng-cloak style="background: #8082C6">
-    <div ui-view="toolbar">
-    </div>
-    <div ui-view="homeView" style="height:91%">
-    </div>
+<body ng-app="starter" ng-cloak style="height:100%;background: #8082C6">
+    
+        <div ui-view="toolbar" class="title-div">
+        </div>
+        <div ui-view="homeView" class="footer-div">
+        </div>
+    
 </body>
 
 </html>

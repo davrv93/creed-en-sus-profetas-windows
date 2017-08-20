@@ -1,62 +1,82 @@
 <div layout="column" class="home-container responsive-sm" align="center" style="height:100%;     overflow-y:hidden;">
-    <div  ng-show="!searchMode" class="search-box">
-        <h2 class="title" aria-label="{{cabecera}}">{{pageTitle}}: {{obj_header.chapter}}</h2>
-    </div>
-    <div ng-show="searchMode" class="custom-bar-dark">
-        <label class="item-input-wrapper">
-            <i class="icon ion-ios-search placeholder-icon"></i>
-            <input type="search" aria-label="Haga clic aquí y escriba o dicte las palabras a buscar" placeholder="{{'buscador.label' | translate}}" ng-model="query">
-            </md-input-container>
-            <md-button class="md-raised" style="" ng-click="search()" aria-label="Haga clic aquí para buscar la palabra">
-                <ng-md-icon icon="search" class="icon-in-button">
-                </ng-md-icon>
-                <span style="vertical-align: middle;">
+    <div layout="column" flex="10" class="search-box">
+        <div ng-show="!searchMode">
+            <h2 class="title" aria-label="{{cabecera}}">{{pageTitle}}: {{obj_header.chapter}}</h2>
+        </div>
+        <div ng-show="searchMode" class="custom-bar-dark">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" aria-label="Haga clic aquí y escriba o dicte las palabras a buscar" placeholder="{{'buscador.label' | translate}}" ng-model="query">
+                </md-input-container>
+                <md-button class="md-raised" style="" ng-click="search()" aria-label="Haga clic aquí para buscar la palabra">
+                    <ng-md-icon icon="search" class="icon-in-button">
+                    </ng-md-icon>
+                    <span style="vertical-align: middle;">
                     {{'buscador.btn_buscar' | translate}}
                 </span>
-            </md-button>
-            <md-button class="md-raised" ng-click="searchCancel()" aria-label="Haga clic aquí para cancelar el modo buscador.">
-                <span>{{'buscador.btn_cancelar' | translate}}</span>
-            </md-button>
-    </div>
-    <md-content style="height:92%; background-color:#8082C6" class="has-header has-footer">
-        <div ng-attr-id="{{'title'+$index}}" class="text-content-show" ng-repeat="x in obj_reading | filter:filter" ng-click="setClass($index,x);">
-            <b><span class="verse">{{x.verse}}. </span></b> <span class="verse">{{x.data}}</span>
-            <br>
-            <br>
+                </md-button>
+                <md-button class="md-raised" ng-click="searchCancel()" aria-label="Haga clic aquí para cancelar el modo buscador.">
+                    <span>{{'buscador.btn_cancelar' | translate}}</span>
+                </md-button>
         </div>
-    </md-content>
-    <div class="custom-footer-dark" layout="row">
-        <div id="audio_player_container" ref="player" style="display: inline-block;
+    </div>
+    <div layout="column" flex="80">
+        <md-content style="background-color:#8082C6">
+            <div ng-attr-id="{{'title'+$index}}" class="text-content-show" ng-repeat="x in obj_reading | filter:filter" ng-click="setClass($index,x);">
+                <b><span class="verse">{{x.verse}}. </span></b> <span class="verse">{{x.data}}</span>
+                <br>
+                <br>
+            </div>
+        </md-content>
+    </div>
+    <div layout="column" flex="10" class="custom-footer-dark" style="width:100%;">
+        <div layout="row" flex="100" style="width:100%;">
+            <!-- <div id="audio_player_container" ref="player" style="display: inline-block;
               vertical-align: middle;
               
               line-height: normal; text-align: right; width:100%; ">
-        </div>
-        <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
+            </div> -->
+            <div ng-show="conditionPlayer" style="display: inline-block;
+              vertical-align: middle;              
+              line-height: normal; 
+              text-align: right; width:100%; ">
+                <md-toolbar flex="100" layout="row" style="height:100%">
+                    <ng-md-icon ng-if="sound.paused" ng-click="sound.play()" icon="play_circle_outline" size="52">
+                    </ng-md-icon>
+                    <ng-md-icon ng-if="!sound.paused" ng-click="sound.pause()" icon="pause_circle_outline" size="52">
+                    </ng-md-icon>
+                    <ng-md-icon ng-click="sound.stop()" icon="stop" size="52">
+                    </ng-md-icon>
+                    <md-progress-linear md-mode="determinate" value="{{sound.progress*100}}"></md-progress-linear>
+                </md-toolbar>
+            </div>
+            <div layout="row" ng-show="!conditionPlayer" style="display: inline-block;
               vertical-align: middle;
               line-height: normal; text-align: right; width:80%; ">
-            <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="searchFunction();">
-                <ng-md-icon icon="search"></ng-md-icon>
-            </button>
-        </div>
-        <div ng-show="!conditionPlayer" layout="row" class="footer-button">
-            <button class="md-icon-button md-button" ng-click="showActionToast('copiado')" aria-label="Open sample menu" clipboard supported="supported" text="buildVerse()" on-copied="success()" on-error="fail(err)">
-                <ng-md-icon icon="content_copy"></ng-md-icon>
-            </button>
-        </div>
-        <div layout="row" ng-show="!conditionPlayer" class="footer-button">
-            <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('twitter')">
-                <ng-include src="'resources/apps/home/twitter.svg'"></ng-include>
-            </button>
-        </div>
-        <div layout="row" ng-show="!conditionPlayer" class="footer-button">
-            <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('facebook')">
-                <ng-include src="'resources/apps/home/facebook.svg'"></ng-include>
-            </button>
-        </div>
-        <div layout="row" ng-show="!conditionPlayer" class="footer-button">
-            <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('whatsapp')">
-                <ng-include src="'resources/apps/home/whatsapp.svg'"></ng-include>
-            </button>
+                <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="searchFunction();">
+                    <ng-md-icon icon="search"></ng-md-icon>
+                </button>
+            </div>
+            <div ng-show="!conditionPlayer" layout="row" class="footer-button">
+                <button class="md-icon-button md-button" ng-click="showActionToast('copiado')" aria-label="Open sample menu" clipboard supported="supported" text="buildVerse()" on-copied="success()" on-error="fail(err)">
+                    <ng-md-icon icon="content_copy"></ng-md-icon>
+                </button>
+            </div>
+            <div layout="row" ng-show="!conditionPlayer" class="footer-button">
+                <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('twitter')">
+                    <ng-include src="'resources/apps/home/twitter.svg'"></ng-include>
+                </button>
+            </div>
+            <div layout="row" ng-show="!conditionPlayer" class="footer-button">
+                <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('facebook')">
+                    <ng-include src="'resources/apps/home/facebook.svg'"></ng-include>
+                </button>
+            </div>
+            <div layout="row" ng-show="!conditionPlayer" class="footer-button">
+                <button class="md-icon-button md-button" aria-label="Open sample menu" ng-click="shareSocial('whatsapp')">
+                    <ng-include src="'resources/apps/home/whatsapp.svg'"></ng-include>
+                </button>
+            </div>
         </div>
     </div>
     <!-- <core-progress state="progress"></core-progress> -->

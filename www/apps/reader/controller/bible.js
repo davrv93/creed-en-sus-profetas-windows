@@ -1,4 +1,7 @@
-app.controller('BibleCtrl', function($scope, $sce, $state, $ionicScrollDelegate, $http, $mdToast, $cordovaClipboard, $mdDialog, $filter, API_READER, $stateParams, $translate, $rootScope, $cordovaSocialSharing) {
+app.controller('BibleCtrl', function($scope, $sce, $state, $ionicScrollDelegate,
+    $http, $mdToast, $cordovaClipboard, $mdDialog, $filter, API_READER,
+    $stateParams, $translate, $rootScope, $cordovaSocialSharing) {
+
     var $translateFilter = $filter('translate');
     $scope.conditionPlayer = false;
     $scope.searchMode = false;
@@ -16,16 +19,16 @@ app.controller('BibleCtrl', function($scope, $sce, $state, $ionicScrollDelegate,
 
     $scope.setAT = function() {
         $scope.testament = '1';
-        
+
     };
 
     $scope.scrollTop = function() {
-      $ionicScrollDelegate.scrollTop();
-   };
+        $ionicScrollDelegate.scrollTop();
+    };
 
     $scope.setNT = function() {
         $scope.testament = '2';
-        
+
     };
 
 
@@ -216,6 +219,13 @@ app.controller('BibleCtrl', function($scope, $sce, $state, $ionicScrollDelegate,
         var audio = ''
         if ($scope.content.audio) {
             audio = 'http://davrv93.pythonanywhere.com/' + $scope.content.audio
+            $scope.audio = 'http://davrv93.pythonanywhere.com/' + $scope.content.audio
+            $scope.sound = ngAudio.load("sounds/mySound.mp3"); // returns NgAudioObject
+
+
+
+
+
         } else {
             audio = ''
         }
@@ -376,6 +386,13 @@ app.controller('BibleCtrl', function($scope, $sce, $state, $ionicScrollDelegate,
 
         $http(req).success(function(res) {
             $scope.content = res;
+            $scope.audio = 'http://davrv93.pythonanywhere.com/' + $scope.content.audio
+            $scope.sound = ngAudio.load($scope.audio); // returns NgAudioObject
+            console.log($scope.sound)
+
+
+
+
             $scope.obj_header = res.obj_header;
             $scope.obj_reading = res.obj_reading;
             $scope.pageTitle = $translateFilter(res.obj_header.book_name);
