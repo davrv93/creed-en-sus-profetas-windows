@@ -171,7 +171,6 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http,
         localStorage.language = locale;
         $scope.onListReading();
         if ($rootScope.conditionPlayer) {
-            $scope.dropPlayer();
             $rootScope.conditionPlayer = true;
             $scope.handlePlayer();
         }
@@ -180,49 +179,13 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http,
     };
 
 
-
-    $scope.renderPlayer = function() {
-        var audio = ''
-        if ($scope.content.audio) {
-            audio = 'http://davrv93.pythonanywhere.com/' + $scope.content.audio
-        } else {
-            audio = ''
-        }
-        var playlist = [{
-            url: audio,
-            displayText: 'Audio'
-        }, ];
-        var player =
-            React.createElement(AudioPlayer, {
-                playlist: playlist,
-                autoplay: true,
-                cycle: false,
-                hideForwardSkip: true,
-                hideBackSkip: true,
-                autoplayDelayInSeconds: 2.1,
-                style: {
-                    position: 'fixed',
-                    bottom: 0
-                }
-            });
-
-        ReactDOM.render(player,
-            document.getElementById('audio_player_container')
-        );
-        console.log(player)
-    };
-
-    $scope.dropPlayer = function() {
-        if (document.getElementById('audio_player_container')) {
-            ReactDOM.unmountComponentAtNode(document.getElementById('audio_player_container'));
-        }
-    };
-
     $scope.handlePlayer = function() {
         if ($rootScope.conditionPlayer) {
             $rootScope.conditionPlayer = false;
+            $scope.sound.stop();
         } else {
             $rootScope.conditionPlayer = true;
+            $scope.sound.play();
         }
         console.log('conditionPlayer', $rootScope.conditionPlayer)
     };
@@ -230,11 +193,12 @@ app.controller('ReaderCtrl', function($scope, $sce, $state, $http,
     console.log($state.$current);
 
     $scope.$watch(function() {
-        return $state.$current.name
+        return $state.$current
     }, function(newVal, oldVal) {
         //do something with values
-        $scope.dropPlayer();
+        $scope.sound.stop();        
         $rootScope.conditionPlayer = false;
+        
     })
 
     $scope.HighLight = function() {
